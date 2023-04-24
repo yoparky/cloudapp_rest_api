@@ -20,7 +20,7 @@ function post_slip(number) {
 }
 
 function get_slip(id) {
-    const key = getKey(datastore, SLIP, id);
+    const key = helpers.getKey(datastore, SLIP, id);
     return datastore.get(key).then(entity => {
         if (entity[0] === undefined || entity[0] === null) {
             return entity;
@@ -41,12 +41,12 @@ function get_slips() {
 }
 
 function delete_slip(id) {
-    const key = getKey(datastore, SLIP, id);
+    const key = helpers.getKey(datastore, SLIP, id);
     return datastore.delete(key);
 }
 
 function put_boat_at_slip(slip_id, boat_id) {
-    const slip_key = getKey(datastore, SLIP, slip_id);
+    const slip_key = helpers.getKey(datastore, SLIP, slip_id);
     return datastore.get(slip_key).then(entity => {
         if (entity[0] === undefined || entity[0] === null) {
             return entity;
@@ -69,7 +69,7 @@ function put_boat_at_slip(slip_id, boat_id) {
 }
 
 function delete_boat_leave_slip(slip_id, boat_id) {
-    const slip_key = getKey(datastore, SLIP, slip_id);
+    const slip_key = helpers.getKey(datastore, SLIP, slip_id);
     return datastore.get(slip_key).then(entity => {
         if (entity[0] === undefined || entity[0] === null) {
             return entity;
@@ -89,12 +89,6 @@ function delete_boat_leave_slip(slip_id, boat_id) {
         }
     });
 }
-
-// helper to get key from datastore
-function getKey(datastore, kind, id) {
-    return datastore.key([kind, parseInt(id, 10)]);
-}
-
 
 module.exports = {
     post_slip,

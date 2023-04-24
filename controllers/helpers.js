@@ -32,5 +32,6 @@ function getKey(datastore, kind, id) {
 
 module.exports = {
     fromDatastore,
-    cascadeDelete
+    cascadeDelete,
+    getKey
 }

@@ -18,7 +18,7 @@ function get_boats() {
 }
 
 function get_boat(id) {
-    const key = getKey(datastore, BOAT, id);
+    const key = helpers.getKey(datastore, BOAT, id);
     return datastore.get(key).then(entity => {
         if (entity[0] === undefined || entity[0] === null) {
             return entity;
@@ -42,7 +42,7 @@ function post_boat(name, type, length) {
 }
 
 function patch_boat(id, name, type, length) {
-    const key = getKey(datastore, BOAT, id);
+    const key = helpers.getKey(datastore, BOAT, id);
     const edit_boat = {
         "name": name,
         "type": type,
@@ -64,15 +64,9 @@ function delete_boat(id) {
     });
 
     // delete
-    const key = getKey(datastore, BOAT, id);
+    const key = helpers.getKey(datastore, BOAT, id);
     return datastore.delete(key);
 }
-
-// helper to get key from datastore
-function getKey(datastore, kind, id) {
-    return datastore.key([kind, parseInt(id, 10)]);
-}
-
 
 module.exports = {
     get_boats,
