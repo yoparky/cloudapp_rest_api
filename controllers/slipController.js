@@ -3,7 +3,9 @@
 const { Datastore } = require('@google-cloud/datastore');
 const helpers = require('./helpers');
 
-const datastore = new Datastore();
+const datastore = new Datastore({
+    projectId: 'cs493-assignment3',
+  });
 const SLIP = "Slip";
 
 // Begin slip Model Functions
