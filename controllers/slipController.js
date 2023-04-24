@@ -4,7 +4,7 @@ const { Datastore } = require('@google-cloud/datastore');
 const helpers = require('./helpers');
 
 const datastore = new Datastore({
-    projectId: 'cs493-assignment3',
+    projectId: 'a3-rest-api',
   });
 const SLIP = "Slip";
 
